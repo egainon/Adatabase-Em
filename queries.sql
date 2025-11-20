@@ -27,10 +27,29 @@
 -- WHERE title LIKE '%react%' OR title LIKE '%React%';
 
 -- Récupérer la liste des thèmes avec le nombre de ressources par thème
-SELECT count(*)
-FROM themes;
+-- SELECT 
+-- themes.name, 
+-- COUNT(theme_id) AS total
+-- FROM resources
+-- JOIN themes ON resources.theme_id=themes.id
+-- GROUP BY name;
 
+-- Récupérer le nom et l'url de toutes les ressources avec un tableau/liste 
+-- contenant l'ensemble de leurs skills associés
+SELECT 
+resources.title, 
+resources.url,
+skills.name
+FROM resources 
+JOIN resources_skills ON resources_skills.resource_id = resources.id
+JOIN skills ON resources_skills.skill_id = skills.id
+GROUP BY resources.title, resources.url;
 
--- Récupérer le nom et l'url de toutes les ressources avec un tableau/liste contenant l'ensemble de leurs skills associés
 -- Récupérer les 5 ressources les plus récentes avec leur thème
+-- SELECT title, themes.name
+-- FROM resources
+-- JOIN themes ON resources.theme_id = themes.id
+-- ORDER BY resources.created_at DESC 
+-- LIMIT 3;
+
 -- Récupérer toutes les compétences qui ne sont associées à aucune ressource
