@@ -6,29 +6,29 @@ CREATE TYPE resource_type AS ENUM (
     'projet'
 );
 
--- -- Create a new table 'themes' with a primary key and columns
+-- Create a new table 'themes' with a primary key and columns
 CREATE TABLE themes (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     description VARCHAR(255) NOT NULL,
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Create a new table 'ressources' with a primary key and columns
 CREATE TABLE resources (
     id SERIAL PRIMARY KEY,
-    text TEXT NOT NULL,
+    title TEXT NOT NULL,
     url TEXT NOT NULL,
     description TEXT NOT NULL,
     type resource_type,
     is_ada BOOLEAN,
     theme_id INTEGER REFERENCES themes(id), 
-    created_at TIMESTAMP,
-    updated_at TIMESTAMP
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- -- Create a new table 'skills' with a primary key and columns
+-- Create a new table 'skills' with a primary key and columns
 CREATE TABLE skills (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL
