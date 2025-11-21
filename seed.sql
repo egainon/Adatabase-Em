@@ -18,7 +18,8 @@ VALUES
 (2, 'React'), 
 (3, 'SQL'), 
 (4, 'PostgreSQL'), 
-(5, 'Node.js');
+(5, 'Node.js'),
+(6, 'HTML');
 
 INSERT INTO resources_skills (resource_id, skill_id)
 VALUES
